@@ -6,13 +6,13 @@ function _ft_client_theme_scripts_styles() {
   $theme = wp_get_theme();
   wp_enqueue_style(
     'ft-client-theme',
-    get_stylesheet_directory_uri() . '/css/app.css',
+    get_stylesheet_directory_uri() . '/dist/css/app.css',
     array(),
     $theme->get('Version')
   );
   wp_enqueue_script(
     'ft-client-theme',
-    get_stylesheet_directory_uri() . '/js/app.js',
+    get_stylesheet_directory_uri() . '/dist/js/app.js',
     array(),
     $theme->get('Version'),
     true
@@ -21,7 +21,7 @@ function _ft_client_theme_scripts_styles() {
 
 add_action(
   'admin_init', function () {
-    add_editor_style('/css/editor-style.css');
+    add_editor_style('/dist/css/editor-style.css');
   }
 );
 
