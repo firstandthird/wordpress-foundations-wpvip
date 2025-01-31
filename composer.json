@@ -1,0 +1,68 @@
+{
+  "name": "wpcomvip/ft-wordpress-foundation",
+  "description": "Development dependencies and plugins for F+T.",
+  "homepage": "https://github.com/wpcomvip/francisfordcoppolawinery/",
+  "license": "GPL-2.0-or-later",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    },
+    {
+      "type": "composer",
+      "url": "https://connect.advancedcustomfields.com"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/pronamic/gravityforms"
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "wpackagist-plugin/acf-extended": "dev-trunk",
+    "wpackagist-plugin/bulk-remove-posts-from-category": "dev-trunk",
+    "wpackagist-plugin/content-control": "2.3.0",
+    "wpackagist-plugin/font-awesome": "dev-trunk",
+    "wpackagist-plugin/members": "dev-trunk",
+    "wpackagist-plugin/redirection": "dev-trunk",
+    "wpackagist-plugin/svg-support": "dev-trunk",
+    "wpackagist-plugin/woocommerce": "9.4.3",
+    "wpackagist-plugin/wordpress-seo": "dev-trunk",
+    "wpengine/advanced-custom-fields-pro": "^6.0",
+    "pronamic/gravityforms": "2.6.8"
+  },
+  "require-dev": {
+    "automattic/vipwpcs": "^2.3",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+    "phpcompatibility/phpcompatibility-wp": "^2"
+  },
+  "extra": {
+    "installer-paths": {
+      "client-mu-plugins/{$name}/": [
+        "type:wordpress-muplugin",
+        "wpackagist-plugin/acf-extended",
+        "wpackagist-plugin/svg-support",
+        "wpackagist-plugin/wordpress-seo",
+        "wpengine/advanced-custom-fields-pro"
+      ],
+      "themes/{$name}": [
+        "type:wordpress-theme"
+      ],
+      "plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ]
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "composer/installers": true,
+      "ffraenz/private-composer-installer": true
+    }
+  }
+}
