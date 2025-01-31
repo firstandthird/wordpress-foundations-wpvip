@@ -1,48 +1,66 @@
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+# Dependencies
+## Avoid any node_modules folders anywhere in the repo; see see https://docs.wpvip.com/how-tos/manage-dependencies/#version-management
+node_modules
+## Avoid package*.json files only at repo root
+/package-lock.json
 
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
+# Built-in; ship with vip-go-mu-plugins
+/plugins/akismet/
+/plugins/advanced-post-cache/
+/plugins/cron-control/
+/plugins/debug-bar/
+/plugins/debug-bar-cron/
+/plugins/gutenberg-ramp/
+/plugins/jetpack/
+/plugins/jetpack-force-2fa/
+/plugins/lightweight-term-count-update/
+/plugins/rewrite-rules-inspector/
+/plugins/two-factor/
+/plugins/vaultpress/
 
-# Configuration
-wp-config.php
+# Uploads directory
+/uploads/
 
-# Example themes
-/wp-content/themes/twenty*/
+# Leftover core/plugin upgrade files
+/upgrade/
 
-# Example plugin
-/wp-content/plugins/hello.php
+# mu-plugins; these are managed at the platform-level
+/mu-plugins/
 
-# Uploads
-/wp-content/uploads/
+# drop-ins; these are managed at the platform-level
+/object-cache.php
+/db.php
 
-# Log files
-*.log
+# Ignore temporary OS files
+.env
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# htaccess
-/.htaccess
+# Local PHPCS configuration files
+.phpcs.xml
+phpcs.xml
 
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
+# Composer (repo root only)
+/vendor/
 
-# All themes
-#
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
+# Francis Ford Coppola
+themes/ft-base-theme/
+themes/twenty*
+client-mu-plugins/*.local.php
+
+# Script output
+/scripts/legacy/*.txt
+/scripts/legacy/redirects-export.json
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/tests/storage/*.json
+/tests/screenshots/**/*.png
+/tests/data/*.json
+!/tests/data/example.json
