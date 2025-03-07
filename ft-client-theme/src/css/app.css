@@ -3,12 +3,10 @@
 
 @plugin '@tailwindcss/forms';
 
-@source './*.css';
-
 @theme {
   --font-*: initial;
-  --font-sans: Catamaran, Helvetica, Arial, sans-serif;
-  --font-heading: Outfit, Helvetica, Arial, sans-serif;
+  --font-sans: Helvetica, Arial, sans-serif;
+  --font-heading: Helvetica, Arial, sans-serif;
 
   --breakpoint-*: initial;
   --breakpoint-xs: 320px;
@@ -18,43 +16,151 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
 
-  --color-primary: #0ea5e9;
-  --color-secondary: #14b8a6;
-  --color-dark: #1f2937;
-  --color-light: #f9fafb;
+  --color-brand-900: #0f4c81;
+  --color-brand-800: #99bb88;
+  --color-brand-700: #f5e89c;
+  --color-brand-600: #b55f20;
+  --color-neutral-900: #1e1e1e;
+  --color-neutral-800: #fdfdfd;
 
-  --text-small: 0.875rem;
-  --text-regular: 1rem;
-  --text-large: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
+  --text-8xl: 6rem; /* 96px */
+  --text-7xl: 4.5rem; /* 72px */
+  --text-6xl: 3.75rem; /* 60px */
+  --text-5xl: 3rem; /* 48px */
+  --text-4xl: 2.25rem; /* 36px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-base: 1rem; /* 16px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-xs: 0.75rem; /* 12px */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    font-size: 16px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--text-3xl);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: var(--text-2xl);
+    line-height: calc(4/3);
+  }
+
+  h3 {
+    font-size: var(--text-xl);
+    line-height: 1.4;
+  }
+
+  h4 {
+    font-size: var(--text-lg);
+    line-height: calc(14/9);
+  }
+
+  h5 {
+    font-size: var(--text-base);
+    line-height: calc(4/3);
+  }
+
+  h6 {
+    font-size: var(--text-sm);
+    line-height: calc(10/7);
+  }
+
+  a {
+    @apply text-brand-900 no-underline hover:underline;
+  }
+
+  p, ul {
+    @apply text-xl mb-[1em] last:mb-0;
+  }
+
+  .entry-content > .alignfull {
+    @apply relative left-1/2 -translate-x-1/2 px-5 max-w-none w-screen first:-mt-8 last:-mb-8 md:px-22.5;
+  }
+
+  .entry-content,
+  .block-editor-block-list__layout {
+    ul:not(.block-editor-block-variation-picker__variations) {
+      li {
+        @apply list-inside list-disc;
+      }
+    }
+
+    ol {
+      li {
+        @apply list-inside list-decimal;
+      }
+    }
+  }
+
+  @media (width >= theme(--breakpoint-md)) {
+    h1 {
+      font-size: var(--text-7xl);
+      line-height: 1;
+    }
+
+    h2 {
+      font-size: var(--text-6xl);
+      line-height: 1;
+    }
+
+    h3 {
+      font-size: var(--text-4xl);
+      line-height: calc(10/9);
+    }
+
+    h4 {
+      font-size: var(--text-3xl);
+      line-height: 1.2;
+    }
+
+    h5 {
+      font-size: var(--text-2xl);
+      line-height: calc(4/3);
+    }
+
+    h6 {
+      font-size: var(--text-xl);
+      line-height: calc(7/5);
+    }
+  }
+}
+
+@layer components {
+  .custom-logo {
+    @apply max-h-10.5 w-auto;
+  }
 }
 
 @utility container {
-  padding-inline: 1rem;
-  @media (width >= theme(--breakpoint-md)) {
-    padding-inline: 2rem;
-  }
+  margin-left: auto;
+  margin-right: auto;
+  padding-inline: 1.25rem;
+  max-width: 100%;
   @media (width >= theme(--breakpoint-lg)) {
-    padding-inline: 0rem;
-  }
-}
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    max-width: 1440px;
+    padding-inline: 5.625rem;
   }
 }
